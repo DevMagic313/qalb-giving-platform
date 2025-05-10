@@ -1,5 +1,4 @@
-
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from "@/components/ui/button";
@@ -19,6 +18,7 @@ import { projects, projectCategories } from '../data/projectsData';
 const ProjectDetails = () => {
   const { id } = useParams();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [donationAmount, setDonationAmount] = useState("50");
   const [customAmount, setCustomAmount] = useState("");
   const [donationType, setDonationType] = useState("sadaqah");
@@ -67,15 +67,8 @@ const ProjectDetails = () => {
       return;
     }
     
-    // In a real app, this would redirect to the payment processing page
-    // For now we'll just show a toast and redirect to the donate page with params
-    toast({
-      title: "Donation Initiated",
-      description: `Processing $${amount} ${donationType} donation for ${project.title}`,
-    });
-    
-    // Redirect to the donate page with the project info
-    window.location.href = `/donate?project=${project.id}&amount=${amount}&type=${donationType}`;
+    // Navigate to payment form with project info
+    navigate(`/payment?project=${project.id}&amount=${amount}&type=${donationType}`);
   };
   
   return (

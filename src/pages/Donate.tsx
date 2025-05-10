@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from 'react-router-dom';
 
 const Donate = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const [donationType, setDonationType] = useState("general");
   const [donationAmount, setDonationAmount] = useState("");
@@ -48,25 +49,18 @@ const Donate = () => {
     const fees = coverFees ? baseAmount * 0.03 : 0; // Assume 3% processing fee
     const totalAmount = baseAmount + fees;
     
-    // In a real app, you would send this data to your payment processor
-    console.log("Donation details:", {
-      type: donationType,
-      amount: baseAmount,
-      fees: fees,
-      total: totalAmount,
-      recurring: recurring,
-      frequency: recurring ? recurringFrequency : null,
-      project: selectedProject,
-      dedication: dedicationType ? { type: dedicationType, name: dedicationName } : null,
-      giftAid: giftAid,
-      notes: notes
-    });
+    // Validate the amount
+    if (totalAmount <= 0) {
+      toast({
+        title: "Invalid Amount",
+        description: "Please select or enter a valid donation amount.",
+        variant: "destructive",
+      });
+      return;
+    }
     
-    toast({
-      title: "Thank you for your donation!",
-      description: `Your ${recurring ? recurringFrequency : "one-time"} donation of $${totalAmount.toFixed(2)} has been processed.`,
-      variant: "default",
-    });
+    // Navigate to payment page with params
+    navigate(`/payment?amount=${totalAmount.toFixed(2)}&type=${donationType}${selectedProject ? `&project=${selectedProject}` : ''}`);
   };
 
   return (
