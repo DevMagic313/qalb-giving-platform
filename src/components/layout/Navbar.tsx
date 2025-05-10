@@ -33,14 +33,18 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="flex items-center gap-2">
-              <User size={18} />
-              <span>Login</span>
-            </Button>
-            <Button className="bg-islamic-teal hover:bg-islamic-teal/90 text-white flex items-center gap-2">
-              <BookOpen size={18} />
-              <span className="arabic">تبرع الآن</span> <span className="text-xs">(Donate Now)</span>
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                <User size={18} />
+                <span>Login</span>
+              </Button>
+            </Link>
+            <Link to="/donate">
+              <Button className="bg-islamic-teal hover:bg-islamic-teal/90 text-white flex items-center gap-2">
+                <BookOpen size={18} />
+                <span className="arabic">تبرع الآن</span> <span className="text-xs">(Donate Now)</span>
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -98,14 +102,18 @@ const Navbar = () => {
                 Contact
               </Link>
               <div className="flex flex-col space-y-2 pt-4 border-t">
-                <Button variant="outline" className="w-full justify-start">
-                  <User size={18} className="mr-2" />
-                  Login
-                </Button>
-                <Button className="w-full justify-start bg-islamic-teal hover:bg-islamic-teal/90">
-                  <BookOpen size={18} className="mr-2" />
-                  <span className="arabic">تبرع الآن</span> <span className="text-xs">(Donate Now)</span>
-                </Button>
+                <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start">
+                    <User size={18} className="mr-2" />
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/donate" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full justify-start bg-islamic-teal hover:bg-islamic-teal/90">
+                    <BookOpen size={18} className="mr-2" />
+                    <span className="arabic">تبرع الآن</span> <span className="text-xs">(Donate Now)</span>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
