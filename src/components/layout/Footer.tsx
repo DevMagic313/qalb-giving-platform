@@ -129,7 +129,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="mt-12 pt-6 border-t border-gray-700 text-center text-xs text-islamic-sand">
-          <p>© {new Date().getFullYear()} Qalb Giving Platform. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DevMagic. All rights reserved.</p>
           <div className="mt-2 space-x-4">
             <Link to="/terms" className="hover:text-islamic-gold transition-colors">Terms of Service</Link>
             <Link to="/privacy" className="hover:text-islamic-gold transition-colors">Privacy Policy</Link>
