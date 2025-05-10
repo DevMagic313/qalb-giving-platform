@@ -1,6 +1,8 @@
 
 import Layout from '../components/layout/Layout';
 import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const About = () => {
   return (
@@ -132,24 +134,51 @@ const About = () => {
         </div>
       </div>
 
-      {/* Our Partners */}
+      {/* Our Partners - Improved Section */}
       <div className="py-16 bg-islamic-cream">
         <div className="container mx-auto px-4">
-          <h2 className="font-playfair text-3xl font-bold text-islamic-charcoal mb-10 text-center">Our Partners</h2>
+          <h2 className="font-playfair text-3xl font-bold text-islamic-charcoal mb-4 text-center">Our Trusted Partners</h2>
+          <p className="text-islamic-charcoal/80 text-center max-w-3xl mx-auto mb-10">
+            We collaborate with leading organizations around the world to maximize impact and ensure the highest standards in humanitarian work.
+          </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center">
             {[
-              { name: "Islamic Relief", logo: "https://images.unsplash.com/photo-1617582907226-c49e2d8fc272?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
-              { name: "Charity Water", logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
-              { name: "Global Education Fund", logo: "https://images.unsplash.com/photo-1560438718-eb61ede255eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
-              { name: "Food For All", logo: "https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+              { 
+                name: "Islamic Relief",
+                logo: "https://i.imgur.com/zcbFTGF.png", 
+                description: "Global humanitarian organization" 
+              },
+              { 
+                name: "Charity Water",
+                logo: "https://i.imgur.com/CRiGOr3.png", 
+                description: "Clean water initiatives"
+              },
+              { 
+                name: "Global Education Fund",
+                logo: "https://i.imgur.com/bhofEWI.png", 
+                description: "Educational programs worldwide" 
+              },
+              { 
+                name: "Food For All",
+                logo: "https://i.imgur.com/eXnUJm2.png", 
+                description: "Fighting food insecurity" 
+              },
             ].map((partner, index) => (
-              <div key={index} className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-sm">
-                <div className="h-16 flex items-center justify-center mb-3">
-                  <img src={partner.logo} alt={`${partner.name} logo`} className="max-h-16 object-contain" />
+              <Card key={index} className="bg-white border-none shadow-md hover:shadow-lg transition-shadow">
+                <div className="p-6 flex flex-col items-center">
+                  <div className="h-20 flex items-center justify-center mb-4 w-full">
+                    <Avatar className="h-20 w-20 rounded-none">
+                      <AvatarImage src={partner.logo} alt={`${partner.name} logo`} className="object-contain" />
+                      <AvatarFallback className="text-lg font-bold bg-islamic-teal/10 text-islamic-teal">
+                        {partner.name.substring(0, 2)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="text-islamic-charcoal font-semibold text-center mb-1">{partner.name}</div>
+                  <div className="text-islamic-charcoal/70 text-sm text-center">{partner.description}</div>
                 </div>
-                <div className="text-islamic-charcoal font-medium text-center">{partner.name}</div>
-              </div>
+              </Card>
             ))}
           </div>
           
@@ -164,7 +193,7 @@ const About = () => {
             </p>
             <a 
               href="/contact" 
-              className="inline-block bg-islamic-teal hover:bg-islamic-teal/90 text-white py-3 px-6 rounded-md"
+              className="inline-block bg-islamic-teal hover:bg-islamic-teal/90 text-white py-3 px-6 rounded-md transition-colors"
             >
               Contact Us to Partner
             </a>
