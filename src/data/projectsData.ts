@@ -58,7 +58,7 @@ export const projects = [
     goal: 20000,
     donorsCount: 405,
     daysLeft: 7,
-    image: "https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1738104259039-4e589a41abaf?q=80&w=1370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: true
   },
   {
@@ -84,7 +84,7 @@ export const projects = [
     goal: 15000,
     donorsCount: 134,
     daysLeft: 20,
-    image: "https://images.unsplash.com/photo-1594031245755-1ac99bbc7a3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1576201399093-dcc46abfa705?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: false
   }
 ];
