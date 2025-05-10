@@ -3,46 +3,27 @@ import { Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { projects } from "@/data/projectsData";
 
-// Mock data for featured projects
-const featuredProjects = [
-  {
-    id: 1,
-    title: "Clean Water Wells in Somalia",
-    category: "Water",
-    location: "Mogadishu, Somalia",
-    description: "Provide clean water to 500 families in drought-affected regions of Somalia.",
-    imageSrc: "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    goalAmount: 15000,
-    raisedAmount: 12450,
-    donors: 218,
-    remainingDays: 24,
-  },
-  {
-    id: 2,
-    title: "Girls' Education in Bangladesh",
-    category: "Education",
-    location: "Dhaka, Bangladesh",
-    description: "Support education for 200 underprivileged girls with school supplies, uniforms, and tuition.",
-    imageSrc: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    goalAmount: 25000,
-    raisedAmount: 10750,
-    donors: 163,
-    remainingDays: 41,
-  },
-  {
-    id: 3,
-    title: "Emergency Food Packages in Gaza",
-    category: "Emergency",
-    location: "Gaza Strip",
-    description: "Distribute food packages to 1,000 families affected by the ongoing humanitarian crisis.",
-    imageSrc: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    goalAmount: 50000,
-    raisedAmount: 42300,
-    donors: 531,
-    remainingDays: 8,
-  },
-];
+// Get featured projects from the main data source
+const featuredProjects = projects
+  .filter(project => project.featured)
+  .slice(0, 3)
+  .map(project => ({
+    id: project.id,
+    title: project.title,
+    category: project.category === "water" ? "Water" : 
+             project.category === "education" ? "Education" : 
+             project.category === "orphans" ? "Orphan Care" : 
+             project.category === "food" ? "Food Security" : "Emergency",
+    location: project.location,
+    description: project.description,
+    imageSrc: project.image,
+    goalAmount: project.goal,
+    raisedAmount: project.raised,
+    donors: project.donorsCount,
+    remainingDays: project.daysLeft,
+  }));
 
 const ProjectCard = ({ project }: { project: typeof featuredProjects[0] }) => {
   const percentRaised = (project.raisedAmount / project.goalAmount) * 100;
