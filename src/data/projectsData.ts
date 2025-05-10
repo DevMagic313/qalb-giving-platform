@@ -19,7 +19,7 @@ export const projects = [
     goal: 12000,
     donorsCount: 145,
     daysLeft: 12,
-    image: "https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1668961915523-884872e392f8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: true
   },
   {
@@ -32,7 +32,7 @@ export const projects = [
     goal: 50000,
     donorsCount: 310,
     daysLeft: 45,
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true
   },
   {
@@ -45,7 +45,7 @@ export const projects = [
     goal: 24000,
     donorsCount: 230,
     daysLeft: 30,
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false
   },
   {
@@ -58,7 +58,7 @@ export const projects = [
     goal: 20000,
     donorsCount: 405,
     daysLeft: 7,
-    image: "https://images.unsplash.com/photo-1469571486292-b53601010376?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true
   },
   {
@@ -71,7 +71,7 @@ export const projects = [
     goal: 50000,
     donorsCount: 780,
     daysLeft: 5,
-    image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true
   },
   {
@@ -84,7 +84,7 @@ export const projects = [
     goal: 15000,
     donorsCount: 134,
     daysLeft: 20,
-    image: "https://images.unsplash.com/photo-1548407260-da850faa41e3?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1594031245755-1ac99bbc7a3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false
   }
 ];
