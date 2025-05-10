@@ -138,9 +138,17 @@ const About = () => {
           <h2 className="font-playfair text-3xl font-bold text-islamic-charcoal mb-10 text-center">Our Partners</h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {[1, 2, 3, 4].map((partner) => (
-              <div key={partner} className="flex items-center justify-center p-4 bg-white rounded-lg h-24 shadow-sm">
-                <div className="text-islamic-charcoal text-xl font-bold">Partner Logo {partner}</div>
+            {[
+              { name: "Islamic Relief", logo: "https://images.unsplash.com/photo-1617582907226-c49e2d8fc272?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+              { name: "Charity Water", logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+              { name: "Global Education Fund", logo: "https://images.unsplash.com/photo-1560438718-eb61ede255eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+              { name: "Food For All", logo: "https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+            ].map((partner, index) => (
+              <div key={index} className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-sm">
+                <div className="h-16 flex items-center justify-center mb-3">
+                  <img src={partner.logo} alt={`${partner.name} logo`} className="max-h-16 object-contain" />
+                </div>
+                <div className="text-islamic-charcoal font-medium text-center">{partner.name}</div>
               </div>
             ))}
           </div>
