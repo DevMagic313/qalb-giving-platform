@@ -147,21 +147,21 @@ const About = () => {
               { 
                 name: "Islamic Relief",
                 logo: "https://i.imgur.com/zcbFTGF.png", 
-                description: "https://unsplash.com/photos/woman-in-black-coat-standing-near-round-white-red-and-blue-wall-k0Jo8m6DO6k" 
+                description: "Global humanitarian organization" 
               },
               { 
                 name: "Charity Water",
-                logo: "https://unsplash.com/photos/a-large-water-tower-with-a-sky-background-DGDISI_BDn4", 
+                logo: "https://i.imgur.com/CRiGOr3.png", 
                 description: "Clean water initiatives"
               },
               { 
                 name: "Global Education Fund",
-                logo: "https://unsplash.com/photos/a-globe-sits-on-a-table-in-a-classroom-aGVMJk3j26U", 
+                logo: "https://i.imgur.com/bhofEWI.png", 
                 description: "Educational programs worldwide" 
               },
               { 
                 name: "Food For All",
-                logo: "https://unsplash.com/photos/a-bunch-of-baskets-filled-with-lots-of-different-types-of-fruits-and-vegetables-1nknq3gDhrs", 
+                logo: "https://i.imgur.com/eXnUJm2.png", 
                 description: "Fighting food insecurity" 
               },
             ].map((partner, index) => (
