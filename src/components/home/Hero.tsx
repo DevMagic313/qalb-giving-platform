@@ -4,11 +4,22 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="relative bg-islamic-teal overflow-hidden">
-      {/* Islamic pattern overlay with reduced opacity */}
-      <div className="absolute inset-0 pattern-bg opacity-10"></div>
+    <div className="relative overflow-hidden">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: 'url("https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80")', 
+        }}
+      >
+        {/* Dark overlay with opacity */}
+        <div className="absolute inset-0 bg-islamic-teal/80"></div>
+        
+        {/* Islamic pattern overlay with reduced opacity */}
+        <div className="absolute inset-0 pattern-bg opacity-10"></div>
+      </div>
       
-      <div className="container mx-auto px-4 py-20 md:py-24 relative z-10">
+      <div className="container mx-auto px-4 py-20 md:py-28 relative z-10">
         <div className="max-w-2xl mx-auto md:mx-0">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Change Lives Through <span className="text-islamic-sand">Transparent Giving</span>
