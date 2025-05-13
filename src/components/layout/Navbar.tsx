@@ -2,7 +2,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { BookOpen, User } from 'lucide-react';
+import { BookOpen, User, ChevronDown } from 'lucide-react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,7 +36,67 @@ const Navbar = () => {
             <Link to="/" className="font-medium hover:text-islamic-teal transition-colors">Home</Link>
             <Link to="/projects" className="font-medium hover:text-islamic-teal transition-colors">Projects</Link>
             <Link to="/about" className="font-medium hover:text-islamic-teal transition-colors">About Us</Link>
-            <Link to="/zakat" className="font-medium hover:text-islamic-teal transition-colors">Zakat Calculator</Link>
+            
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="font-medium hover:text-islamic-teal transition-colors bg-transparent">Resources</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to="/zakat"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-islamic-cream p-6 no-underline outline-none focus:shadow-md"
+                          >
+                            <div className="mb-2 mt-4 text-lg font-medium text-islamic-charcoal">
+                              Zakat Calculator
+                            </div>
+                            <p className="text-sm leading-tight text-islamic-charcoal/80">
+                              Calculate your annual Zakat obligation with our Sharia-compliant tool.
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <Link
+                          to="/faq"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-islamic-cream focus:bg-islamic-cream"
+                        >
+                          <div className="text-sm font-medium leading-none text-islamic-charcoal">FAQ</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-islamic-charcoal/70">
+                            Find answers to commonly asked questions
+                          </p>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/contact"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-islamic-cream focus:bg-islamic-cream"
+                        >
+                          <div className="text-sm font-medium leading-none text-islamic-charcoal">Contact Us</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-islamic-charcoal/70">
+                            Get in touch with our support team
+                          </p>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/terms"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-islamic-cream focus:bg-islamic-cream"
+                        >
+                          <div className="text-sm font-medium leading-none text-islamic-charcoal">Terms & Privacy</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-islamic-charcoal/70">
+                            Our terms of service and privacy policies
+                          </p>
+                        </Link>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            
             <Link to="/contact" className="font-medium hover:text-islamic-teal transition-colors">Contact</Link>
           </div>
 
@@ -87,13 +156,47 @@ const Navbar = () => {
               >
                 About Us
               </Link>
-              <Link 
-                to="/zakat"
-                className="font-medium p-2 rounded hover:bg-islamic-cream transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Zakat Calculator
-              </Link>
+              
+              {/* Resources dropdown for mobile */}
+              <div className="relative">
+                <button 
+                  className="flex items-center justify-between w-full font-medium p-2 rounded hover:bg-islamic-cream transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const submenu = document.getElementById('resources-submenu');
+                    if (submenu) {
+                      submenu.classList.toggle('hidden');
+                    }
+                  }}
+                >
+                  Resources
+                  <ChevronDown size={16} />
+                </button>
+                <div id="resources-submenu" className="hidden pl-4 space-y-2 mt-2">
+                  <Link 
+                    to="/zakat"
+                    className="block p-2 rounded hover:bg-islamic-cream transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Zakat Calculator
+                  </Link>
+                  <Link 
+                    to="/faq"
+                    className="block p-2 rounded hover:bg-islamic-cream transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    FAQ
+                  </Link>
+                  <Link 
+                    to="/terms"
+                    className="block p-2 rounded hover:bg-islamic-cream transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Terms & Privacy
+                  </Link>
+                </div>
+              </div>
+              
               <Link 
                 to="/contact"
                 className="font-medium p-2 rounded hover:bg-islamic-cream transition-colors"
