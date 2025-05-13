@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -9,7 +9,7 @@ const Newsletter = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email.trim()) {
@@ -33,14 +33,14 @@ const Newsletter = () => {
       
       setEmail('');
       setIsSubmitting(false);
-    }, 1000);
-  };
+    }, 500); // Reduced timeout for faster response
+  }, [email, toast]);
   
   return (
-    <div className="bg-islamic-teal text-white py-16">
+    <section className="bg-islamic-teal text-white py-16" aria-labelledby="newsletter-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-playfair mb-3">Stay Updated</h2>
+          <h2 id="newsletter-heading" className="text-3xl md:text-4xl font-bold font-playfair mb-3">Stay Updated</h2>
           <p className="mb-8 text-islamic-sand">
             Subscribe to our newsletter for updates on new projects, impact stories, and more ways to make a difference.
           </p>
@@ -52,6 +52,8 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="flex-grow bg-white/10 border-white/20 text-white placeholder:text-white/60"
+              aria-label="Email address"
+              disabled={isSubmitting}
             />
             <Button 
               type="submit" 
@@ -67,7 +69,7 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

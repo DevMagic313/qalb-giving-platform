@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const stats = [
   { id: 1, label: "Projects Funded", value: 315, prefix: "", suffix: "+" },
@@ -10,8 +10,42 @@ const stats = [
 
 const ImpactStats = () => {
   const [counters, setCounters] = useState(stats.map(() => 0));
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
   
+  // Format number with commas
+  const formatNumber = (num: number): string => {
+    return num.toLocaleString();
+  };
+  
+  // Easing function for smoother animation
+  const easeOutCubic = (x: number): number => {
+    return 1 - Math.pow(1 - x, 3);
+  };
+
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+    
     const duration = 2000; // Animation duration in ms
     const frameRate = 30; // Frames per second
     const totalFrames = duration / (1000 / frameRate);
@@ -31,22 +65,17 @@ const ImpactStats = () => {
     }, 1000 / frameRate);
     
     return () => clearInterval(timerId);
-  }, []);
-  
-  // Easing function for smoother animation
-  const easeOutCubic = (x: number): number => {
-    return 1 - Math.pow(1 - x, 3);
-  };
-  
-  const formatNumber = (num: number): string => {
-    return num.toLocaleString();
-  };
+  }, [isInView]);
   
   return (
-    <div className="bg-islamic-charcoal text-white py-20">
+    <section 
+      ref={sectionRef}
+      className="bg-islamic-charcoal text-white py-20"
+      aria-labelledby="impact-stats-heading"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold font-playfair mb-4">Our Impact Together</h2>
+          <h2 id="impact-stats-heading" className="text-3xl md:text-4xl font-bold font-playfair mb-4">Our Impact Together</h2>
           <div className="h-1 w-24 bg-islamic-gold mx-auto"></div>
         </div>
         
@@ -61,7 +90,7 @@ const ImpactStats = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
